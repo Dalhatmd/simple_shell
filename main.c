@@ -1,7 +1,7 @@
 #include "shell.h"
 int main()
 {
-	char *command;
+	char *command = NULL;
 	size_t len = 0;
 	ssize_t read;
 
@@ -15,7 +15,7 @@ int main()
 	}
 	else
 	{
-		printf("%s\n", command);
+		printf("%s", command);
 	}
 	}
 	free(command);
