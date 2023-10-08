@@ -8,8 +8,9 @@
  */
 void execute(char *command)
 {
-	char *envp[] = {NULL};
-	int status, exec_result;
+	char *envp[] = {NULL}, *args[100];
+	char *token;
+	int status, exec_result, i;
 	pid_t pid;
 
 	pid = fork();
@@ -20,12 +21,17 @@ void execute(char *command)
 	}
 	else if (pid == 0)
 	{
-		char *argv[2];
-		argv[0] = command;
-		argv[1] = NULL;
-		exec_result = execve(command, argv, envp);
-
-		exit(exec_result);
+		token = strtok(command, " ");
+		i = 0;
+                while (token != NULL)
+                {
+                        args[i++] = token;
+                        token = strtok(NULL, " ");
+                }
+                args[i] = NULL;
+                int exec_result = execve(args[0], args, envp);
+                perror("");
+                exit(exec_result);
 	}
 	else
 	{

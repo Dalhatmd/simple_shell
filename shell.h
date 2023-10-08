@@ -13,5 +13,5 @@ extern char **environ;
 void prompt(void);
 char *read_command(void);
 void execute(char *command);
-
+void handle_error(char *argv);
 #endif

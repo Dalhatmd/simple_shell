@@ -13,7 +13,6 @@ char *read_command(void)
 	bytes_read = getline(&command, &len, stdin);
 	if (bytes_read == -1)
 	{
-		printf("\n");
 		return (NULL);
 	}
 	if (bytes_read > 0 && command[bytes_read - 1] == '\n')
