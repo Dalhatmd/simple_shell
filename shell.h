@@ -9,6 +9,9 @@ extern char **environ;
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+
+void prompt(void);
+char *read_command(void);
 void execute(char *command);
 
 #endif
