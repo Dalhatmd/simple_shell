@@ -6,35 +6,26 @@
  *
  * Return: No return
  */
-void execute(char *command)
+int execute(char *command, char *argv[], char *envp[])
 {
-	char *envp[] = {NULL}, *args[100];
-	char *token;
-	int status, exec_result, i;
+	int status;
 	pid_t pid;
 
 	pid = fork();
 	if (pid < 0)
 	{
 		perror("Fork failed\n");
-		exit(1);
+		return(-1);
 	}
 	else if (pid == 0)
 	{
-		token = strtok(command, " ");
-		i = 0;
-                while (token != NULL)
-                {
-                        args[i++] = token;
-                        token = strtok(NULL, " ");
-                }
-                args[i] = NULL;
-                int exec_result = execve(args[0], args, envp);
-                perror("");
-                exit(exec_result);
+		execve(command, argv, envp);
+		fprintf(stderr, "%s: command not found \n", command);
+		exit(127);
 	}
 	else
 	{
 		waitpid(pid, &status, 0);
+		return (WEXITSTATUS(status));
 	}
 }

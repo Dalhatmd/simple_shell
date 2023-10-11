@@ -12,6 +12,9 @@ extern char **environ;
 
 void prompt(void);
 char *read_command(void);
-void execute(char *command);
+int execute(char *command, char *argv[], char *envp[]);
 void handle_error(char *argv);
+void process(char *input);
+int search(char *command, char *argv[], char *envp[]);
+void loop(char *argv[]);
 #endif
