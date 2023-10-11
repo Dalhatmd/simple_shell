@@ -21,7 +21,7 @@ int search(char *command, char *argv[], char *envp[])
 		}
 		path_dir = strtok(NULL, ":");
 	}
-	fprintf(stderr, "%s: command not found\n", PROG_NAME);
+	fprintf(stderr, "%s: No such file or directory\n", PROG_NAME);
 	free(path_copy);
 	return (127);
 }
