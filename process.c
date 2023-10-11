@@ -17,6 +17,10 @@ void process(char *input)
 	if (count > 0)
 	{
 		tokens[count] = '\0';
+		if (strcmp(tokens[0], "exit") == 0)
+		{
+			exit(0);
+		}
 		status = execute(tokens[0], tokens, envp);
 		if (status != 0)
 		{
