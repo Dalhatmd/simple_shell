@@ -12,20 +12,20 @@ int execute(char *command, char *argv[], char *envp[])
 	pid_t pid;
 
 	pid = fork();
-	if (pid < 0)
-	{
-		perror("Fork failed\n");
-		return(-1);
-	}
-	else if (pid == 0)
+	if (pid == 0)
 	{
 		execve(command, argv, envp);
 		fprintf(stderr, "%s: command not found \n", command);
 		exit(127);
 	}
-	else
+	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
 		return (WEXITSTATUS(status));
+	}
+	else
+	{
+                perror("Fork failed\n");
+                return(-1);
 	}
 }

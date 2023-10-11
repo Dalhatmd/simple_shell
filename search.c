@@ -10,7 +10,7 @@ int search(char *command, char *argv[], char *envp[])
 
 	while (path_dir != NULL)
 	{
-		snprintf(command_path, sizeof(command_path), "%s%s", path_dir, command);
+		snprintf(command_path, sizeof(command_path), "%s/%s", path_dir, command);
 		status = execute(command_path, argv, envp);
 		if (status == 0)
 		{

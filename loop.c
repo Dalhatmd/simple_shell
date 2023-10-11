@@ -7,7 +7,7 @@ void loop(char *argv[])
 
 	while (1)
 	{
-		printf("$ ");
+		printf("%s> ", argv[0]);
 		b_read = getline(&command, &command_size, stdin);
 		if (b_read == -1)
 		{

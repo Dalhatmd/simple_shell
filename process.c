@@ -1,10 +1,12 @@
 #include "shell.h"
 void process(char *input)
 {
-	char *envp[] = {NULL}, *token;
+	char *envp[] = {NULL};
+	char *token;
 	char *tokens[1024];
 	int count, status;
 
+	count = 0;
 	token = strtok(input, " ");
 	while (token != NULL)
 	{
@@ -14,7 +16,7 @@ void process(char *input)
 	}
 	if (count > 0)
 	{
-		token[count] = '\0';
+		tokens[count] = '\0';
 		status = execute(tokens[0], tokens, envp);
 		if (status != 0)
 		{
