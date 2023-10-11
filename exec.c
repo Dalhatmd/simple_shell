@@ -15,7 +15,7 @@ int execute(char *command, char *argv[], char *envp[])
 	if (pid == 0)
 	{
 		execve(command, argv, envp);
-		fprintf(stderr, "%s: command not found \n", command);
+		/*fprintf(stderr, "%s: command not found \n", command);*/
 		exit(127);
 	}
 	else if (pid > 0)

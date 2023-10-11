@@ -10,7 +10,9 @@ int search(char *command, char *argv[], char *envp[])
 
 	while (path_dir != NULL)
 	{
-		snprintf(command_path, sizeof(command_path), "%s/%s", path_dir, command);
+		strcpy(command_path, path_dir);
+		strcat(command_path, "/");
+		strcat(command_path, command);
 		status = execute(command_path, argv, envp);
 		if (status == 0)
 		{
@@ -19,7 +21,7 @@ int search(char *command, char *argv[], char *envp[])
 		}
 		path_dir = strtok(NULL, ":");
 	}
-	fprintf(stderr, "%s: command not found\n", command);
+	fprintf(stderr, "%s: command not found\n", PROG_NAME);
 	free(path_copy);
 	return (127);
 }

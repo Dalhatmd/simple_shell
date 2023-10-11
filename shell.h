@@ -1,7 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-
+extern char *PROG_NAME;
 #include <stdio.h>
 #include <stddef.h>
 #include <unistd.h>
@@ -16,5 +16,5 @@ int execute(char *command, char *argv[], char *envp[]);
 void handle_error(char *argv);
 void process(char *input);
 int search(char *command, char *argv[], char *envp[]);
-void loop(char *argv[]);
+void loop(void);
 #endif

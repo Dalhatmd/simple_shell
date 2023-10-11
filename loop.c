@@ -1,5 +1,5 @@
 #include "shell.h"
-void loop(char *argv[])
+void loop(void)
 {
 	char *command = NULL;
 	size_t command_size = 0;
@@ -7,7 +7,7 @@ void loop(char *argv[])
 
 	while (1)
 	{
-		printf("%s> ", argv[0]);
+		printf("$ ");
 		b_read = getline(&command, &command_size, stdin);
 		if (b_read == -1)
 		{
