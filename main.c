@@ -1,8 +1,11 @@
 #include "shell.h"
-char *PROG_NAME;
+
 int main(int argc, char *argv[])
 {
+	char *PROG_NAME;
+	
 	PROG_NAME = argv[0];
-	loop();
+	loop();0
 	return (0);
 }
+
