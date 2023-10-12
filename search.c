@@ -1,4 +1,5 @@
 #include "shell.h"
+
 int search(char *command, char *argv[], char *envp[])
 {
 	char *path, *path_copy, *path_dir, command_path[1024];
