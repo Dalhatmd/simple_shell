@@ -17,4 +17,6 @@ void handle_error(char *argv);
 void process(char *input);
 int search(char *command, char *argv[], char *envp[]);
 void loop(void);
+int check_built(char *command);
+void my_exit(void);
 #endif

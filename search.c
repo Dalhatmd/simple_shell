@@ -21,7 +21,8 @@ int search(char *command, char *argv[], char *envp[])
 		}
 		path_dir = strtok(NULL, ":");
 	}
+	/* add function to check for built_in command. if it returns not */
 	fprintf(stderr, "%s: No such file or directory\n", PROG_NAME);
 	free(path_copy);
-	return (127);
+	return (0);
 }
