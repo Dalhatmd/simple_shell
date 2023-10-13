@@ -1,10 +1,10 @@
 #include "shell.h"
 void process(char *input)
 {
-	char *envp[] = {NULL};
+	char *envp[] = {NULL}, *env;
 	char *token;
 	char *tokens[1024];
-	int count, status;
+	int count, status, i;
 
 	count = 0;
 	token = strtok(input, " ");
@@ -23,7 +23,11 @@ void process(char *input)
 		}
 		if (strcmp(tokens[0], "env") == 0)
 		{
-			printf("env\n");
+			i = 0;
+			while ((env = environ[i++]) != NULL)
+			{
+				printf("%s\n", env);
+			}
 		}
 		status = execute(tokens[0], tokens, envp);
 		if (status != 0)

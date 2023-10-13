@@ -2,6 +2,7 @@
 #define SHELL_H
 
 extern char *PROG_NAME;
+extern char **environ;
 #include <stdio.h>
 #include <stddef.h>
 #include <unistd.h>
