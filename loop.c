@@ -1,4 +1,5 @@
 #include "shell.h"
+
 void loop(void)
 {
 	char *command = NULL;
