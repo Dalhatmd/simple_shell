@@ -6,7 +6,7 @@ int search(char *command, char *argv[], char *envp[])
 
 	path = getenv("PATH");
 	path_copy = strdup(path);
-	path_dir = strtok(path_copy, ":");
+	path_dir = _strtok(path_copy, ":");
 
 	while (path_dir != NULL)
 	{
@@ -19,7 +19,7 @@ int search(char *command, char *argv[], char *envp[])
 			free(path_copy);
 			return(0);
 		}
-		path_dir = strtok(NULL, ":");
+		path_dir = _strtok(NULL, ":");
 	}
 	/* add function to check for built_in command. if it returns not */
 	fprintf(stderr, "%s: No such file or directory\n", PROG_NAME);

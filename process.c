@@ -7,12 +7,12 @@ void process(char *input)
 	int count, status, i;
 
 	count = 0;
-	token = strtok(input, " ");
+	token = _strtok(input, " ");
 	while (token != NULL)
 	{
 		tokens[count] = token;
 		count++;
-		token = strtok(NULL, " ");
+		token = _strtok(NULL, " ");
 	}
 	if (count > 0)
 	{
