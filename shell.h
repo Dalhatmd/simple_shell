@@ -3,6 +3,11 @@
 
 extern char *PROG_NAME;
 extern char **environ;
+/*static char buffer[BUF_SIZE];
+static int buf_pos = 0;
+static int buf_size = 0;*/
+#define BUF_SIZE 1024
+
 #include <stdio.h>
 #include <stddef.h>
 #include <unistd.h>
@@ -20,4 +25,5 @@ int search(char *command, char *argv[], char *envp[]);
 void loop(void);
 int check_built(char *command);
 void my_exit(void);
+ssize_t _getline(char *lineptr, size_t *n, FILE *stream);
 #endif

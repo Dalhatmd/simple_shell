@@ -1,15 +1,16 @@
 #include "shell.h"
-
 void loop(void)
 {
 	char *command = NULL;
 	size_t command_size = 0;
 	ssize_t b_read;
 
+	command = malloc(BUF_SIZE);
 	while (1)
 	{
 		printf("$ ");
-		b_read = getline(&command, &command_size, stdin);
+		fflush(stdout);
+		b_read = _getline(command, &command_size, stdin);
 		if (b_read == -1)
 		{
 			break;
