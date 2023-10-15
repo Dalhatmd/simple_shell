@@ -4,7 +4,7 @@ void process(char *input)
 	char *envp[] = {NULL}, *env;
 	char *token;
 	char *tokens[1024];
-	int count, status, i;
+	int count, result, status, i;
 
 	count = 0;
 	token = _strtok(input, " ");
@@ -17,26 +17,14 @@ void process(char *input)
 	if (count > 0)
 	{
 		tokens[count] = '\0';
-		int result = exec_builtin(tokens[0], tokens, envp);
+		result = exec_builtin(tokens[0], tokens, envp);
 		if (result == 1)
 		{
-		/*if (strcmp(tokens[0], "exit") == 0)
-		{
-			exit(EXIT_SUCCESS);
-		}
-		if (strcmp(tokens[0], "env") == 0)
-		{
-			i = 0;
-			while ((env = environ[i++]) != NULL)
+			status = execute(tokens[0], tokens, envp);
+			if (status != 0)
 			{
-				printf("%s\n", env);
+				search(tokens[0], tokens, envp);
 			}
-		}*/
-		status = execute(tokens[0], tokens, envp);
-		if (status != 0)
-		{
-			search(tokens[0], tokens, envp);
-		}
 		}
 	}
 }

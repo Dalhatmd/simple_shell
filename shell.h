@@ -29,5 +29,6 @@ char *_strtok(char *str, const char *delim);
 int is_delim(char c, const char *delim);
 int my_exit(char *status);
 int exec_builtin(char *command, char *argv[], char *envp[]);
-
+void exec_setenv(char *var, char *val);
+void exec_unsetenv(char *var);
 #endif
