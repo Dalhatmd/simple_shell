@@ -24,8 +24,10 @@ void process(char *input);
 int search(char *command, char *argv[], char *envp[]);
 void loop(void);
 int check_built(char *command);
-void my_exit(void);
 ssize_t _getline(char *lineptr, size_t *n, FILE *stream);
 char *_strtok(char *str, const char *delim);
 int is_delim(char c, const char *delim);
+int my_exit(char *status);
+int exec_builtin(char *command, char *argv[], char *envp[]);
+
 #endif

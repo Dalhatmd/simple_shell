@@ -1,5 +1,8 @@
 #include "shell.h"
-void my_exit(void)
+int my_exit(char *status)
 {
-	exit(0);
+	int exit_status;
+
+	exit_status = atoi(status);
+	exit(exit_status);
 }

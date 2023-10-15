@@ -17,7 +17,10 @@ void process(char *input)
 	if (count > 0)
 	{
 		tokens[count] = '\0';
-		if (strcmp(tokens[0], "exit") == 0)
+		int result = exec_builtin(tokens[0], tokens, envp);
+		if (result == 1)
+		{
+		/*if (strcmp(tokens[0], "exit") == 0)
 		{
 			exit(EXIT_SUCCESS);
 		}
@@ -28,15 +31,12 @@ void process(char *input)
 			{
 				printf("%s\n", env);
 			}
-		}
+		}*/
 		status = execute(tokens[0], tokens, envp);
 		if (status != 0)
 		{
 			search(tokens[0], tokens, envp);
 		}
-		else if (status == 1)
-		{
-			check_built(input);
 		}
 	}
 }
