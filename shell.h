@@ -27,8 +27,25 @@ int check_built(char *command);
 ssize_t _getline(char *lineptr, size_t *n, FILE *stream);
 char *_strtok(char *str, const char *delim);
 int is_delim(char c, const char *delim);
-int my_exit(char *status);
+int my_exit(char *argv[]);
 int exec_builtin(char *command, char *argv[], char *envp[]);
-void exec_setenv(char *var, char *val);
-void exec_unsetenv(char *var);
+int exec_setenv(char *argv[]);
+int exec_unsetenv(char *argv[]);
+int my_env(char *argv[]);
+
+/*typedef struct
+{
+	char **name;
+        int (*handler)(char *argv[]);
+}commandHandler;*/
+
+typedef int (*C_handler)(char *argv[]);
+
+typedef struct
+{
+	char *name;
+	C_handler handler;
+}ComMap;
+
+extern ComMap com_maps[];
 #endif

@@ -1,6 +1,25 @@
 #include "shell.h"
+ComMap com_map[] = {
+	{"exit", my_exit},
+	{"env", my_env},
+	{"setenv", exec_setenv},
+	{"unsetenv", exec_unsetenv},
+	{NULL, NULL}
+};
 int exec_builtin(char *command, char *argv[], char *envp[])
 {
+	int i;
+
+	for (i = 0; com_map[i].name != NULL;  i++)
+	{
+		if (strcmp(command, com_map[i].name) == 0)
+		{
+			return com_map[i].handler(argv);
+		}
+	}
+	return (1);
+}
+	/*
 	char **env = environ;
 
 	if (strcmp(command, "exit") == 0)
@@ -47,27 +66,43 @@ int exec_builtin(char *command, char *argv[], char *envp[])
 		}
 		return (0);
 	}
-	return (1);
+	return (1);*/
+
+
+int exec_setenv(char *argv[])
+{
+	int result;
+	
+	if (argv[1] != NULL && argv[2] != NULL)
+	{
+		result = setenv(argv[1], argv[2], 1);
+		if (result != 0)
+		{
+			fprintf(stderr, "setenv: Unable to set environment variable\n");
+		}
+	}
+	else
+	{
+		fprintf(stderr, "setenv: Invalid arguments\n");
+	}
+	return (0);
 }
 
-void exec_setenv(char *var, char *val)
+int exec_unsetenv(char *argv[])
 {
 	int result;
 
-	result = setenv(var, val, 1);
-	if (result != 0)
+	if (argv[1] != NULL)
 	{
-		fprintf(stderr, "setenv: Unable to set environment variable\n");
+		result = unsetenv(argv[1]);
+		if (result != 0)
+		{
+			fprintf(stderr, "unsetenv: Unable to unset environment variable\n");
+		}
 	}
-}
-
-void exec_unsetenv(char *var)
-{
-	int result;
-
-	result = unsetenv(var);
-	if (result != 0)
+	else
 	{
-		fprintf(stderr, "unsetenv: Unable to unset environment variable\n");
+		fprintf(stderr, "unsetenv: Invalid argument\n");
 	}
+	return (0);
 }
