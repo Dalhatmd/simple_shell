@@ -2,6 +2,7 @@
 void loop(void)
 {
 	char *command = NULL;
+	char *token;
 	size_t command_size = 0;
 	ssize_t b_read;
 
@@ -19,7 +20,12 @@ void loop(void)
 		{
 			command[b_read - 1] = '\0';
 		}
-		process(command);
+		token = strtok(command, ";");
+		while (token != NULL)
+		{
+			process(token);
+			token = strtok(NULL, ";");
+		}
 	}
 	free(command);
 }
