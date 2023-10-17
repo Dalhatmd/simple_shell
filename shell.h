@@ -32,12 +32,7 @@ int exec_builtin(char *command, char *argv[], char *envp[]);
 int exec_setenv(char *argv[]);
 int exec_unsetenv(char *argv[]);
 int my_env(char *argv[]);
-
-/*typedef struct
-{
-	char **name;
-        int (*handler)(char *argv[]);
-}commandHandler;*/
+int cd(char *argv[]);
 
 typedef int (*C_handler)(char *argv[]);
 

@@ -4,12 +4,14 @@ ComMap com_map[] = {
 	{"env", my_env},
 	{"setenv", exec_setenv},
 	{"unsetenv", exec_unsetenv},
+	{"cd", cd},
 	{NULL, NULL}
 };
 int exec_builtin(char *command, char *argv[], char *envp[])
 {
 	int i;
 
+	(void)envp;
 	for (i = 0; com_map[i].name != NULL;  i++)
 	{
 		if (strcmp(command, com_map[i].name) == 0)
@@ -19,56 +21,6 @@ int exec_builtin(char *command, char *argv[], char *envp[])
 	}
 	return (1);
 }
-	/*
-	char **env = environ;
-
-	if (strcmp(command, "exit") == 0)
-	{
-		if (argv[1] != NULL)
-		{
-			my_exit(argv[1]);
-		}
-		else
-		{
-			exit(0);
-		}
-	}
-	else if (strcmp(command, "env") == 0)
-	{
-		while (*env != NULL)
-		{
-			printf("%s\n", *env);
-			env++;
-		}
-		return (0);
-	}
-	else if (strcmp(command, "setenv") == 0)
-	{
-		if (argv[1] != NULL && argv[2] != NULL)
-		{
-			exec_setenv(argv[1], argv[2]);
-		}
-		else
-		{
-			fprintf(stderr, "setenv: Failed\n");
-		}
-		return (0);
-	}
-	else if (strcmp(command, "unsetenv") == 0)
-	{
-		if (argv[1] != NULL)
-		{
-			exec_unsetenv(argv[1]);
-		}
-		else
-		{
-			fprintf(stderr, "unsetenv: Failed\n");
-		}
-		return (0);
-	}
-	return (1);*/
-
-
 int exec_setenv(char *argv[])
 {
 	int result;

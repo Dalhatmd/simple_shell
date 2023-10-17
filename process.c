@@ -1,11 +1,11 @@
 #include "shell.h"
 void process(char *input)
 {
-	char *envp[] = {NULL}, *env;
 	char *token;
 	char *tokens[1024];
-	int count, result, status, i;
+	int count, result, status;
 
+	char *envp[] = {NULL};
 	count = 0;
 	token = _strtok(input, " ");
 	while (token != NULL)
