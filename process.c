@@ -17,14 +17,19 @@ void process(char *input)
 	if (count > 0)
 	{
 		tokens[count] = '\0';
-		result = exec_builtin(tokens[0], tokens, envp);
-		if (result == 1)
+	/*	if (access(tokens[0], X_OK) == -1)
 		{
-			status = execute(tokens[0], tokens, envp);
-			if (status != 0)
+			fprintf(stderr, "%s: No such file or directory\n", PROG_NAME);
+		}*/
+			result = exec_builtin(tokens[0], tokens, envp);
+			if (result == 1)
 			{
-				search(tokens[0], tokens, envp);
+				status = execute(tokens[0], tokens, envp);
+				if (status != 0)
+				{
+					search(tokens[0], tokens, envp);
+				}
 			}
 		}
 	}
-}
+
