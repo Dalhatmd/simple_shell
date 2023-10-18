@@ -9,8 +9,11 @@ void loop(void)
 	command = malloc(BUF_SIZE);
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
+		{
 		printf("$ ");
 		fflush(stdout);
+		}
 		b_read = _getline(command, &command_size, stdin);
 		if (b_read == -1)
 		{
