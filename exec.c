@@ -29,4 +29,5 @@ int execute(char *command, char *argv[], char *envp[])
                 perror("Fork failed\n");
                 return(-1);
 	}
+	free(envp);
 }
