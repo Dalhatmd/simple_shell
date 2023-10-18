@@ -12,6 +12,7 @@ int execute(char *command, char *argv[], char *envp[])
 	pid_t pid;
 
 	pid = fork();
+	envp = environ;
 	if (pid == 0)
 	{
 		execve(command, argv, envp);
