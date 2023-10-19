@@ -9,9 +9,13 @@ int my_exit(char *argv[])
 		exit_status = atoi(argv[1]);
 		exit(exit_status);
 	}
+	else if (argv[1] == NULL)
+	{
+		exit(EXIT_SUCCESS);
+	}
 	else
 	{
-		fprintf(stderr, "Error: Argument not valid for exit\n");
+		fprintf(stderr, "%s: 1: illegal number (%s)\n", PROG_NAME, argv[1]);
 		return (1);
 	}
 }
