@@ -31,5 +31,5 @@ void process(char *input)
 				}
 			}
 		}
-	}
+}
 

@@ -33,6 +33,7 @@ int exec_setenv(char *argv[]);
 int exec_unsetenv(char *argv[]);
 int my_env(char *argv[]);
 int cd(char *argv[]);
+int is_valid(char *str);
 
 typedef int (*C_handler)(char *argv[]);
 

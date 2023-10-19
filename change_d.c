@@ -51,7 +51,7 @@ int cd(char *argv[])
 	}
 	else
 	{
-		fprintf(stderr, "Cd: No such file or directory\n");
+		fprintf(stderr, "%s can't cd to %s\n", PROG_NAME, argv[1]);
 	}
 	free(current);
 	return (0);
